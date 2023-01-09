@@ -25,6 +25,7 @@
 
         .navbar {
             background-color: transparent !important;
+            font-family: 'montserrat' !important;
         }
 
         .container-1 {
@@ -91,15 +92,42 @@
             font-size: small !important;
             padding: 0 3.5em !important;
         }
+
+        .main-text {
+            text-align: center !important;
+            transform: translate(0%, 50%) !important;
+        }
+
+        .alert {
+            position: absolute !important;
+            top: 2em;
+            right: 1em;
+            width: 20%;
+            z-index: 999;
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #7f7f7f !important;
+            color: black !important;
+            font-size: 1rem !important;
+            padding: 0.5em !important;
+            border: none !important;
+        }
     </style>
 </head>
 
 <body>
+    @if (Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
+    @endif
     <div class="container-1">
         <x-menu></x-menu>
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-12 text-center main-text">
                     <h1>WE PRODUCE COMERCIALS,</h1>
                     <h1>MUSIC VIDEOS, PRINT AND DIGITAL</h1>
                     <h1>DESIGN.</h1>
@@ -140,18 +168,29 @@
             <div class="card">
                 <div class="card-body">
                     <p>Envianos tu información en el siguiente formulario y nos pondremos en contacto en breve.</p>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Nombre*">
-                            <input type="email" class="form-control" id="email" placeholder="Email*">
+                    <form action="/sendemail" method="post">
+                        @csrf
+                        <div>
+                            <input type="text" name="name" id="name" placeholder="Nombre">
+                        </div>
+                        <div>
+                            <input type="email" name="email" id="email" placeholder="Correo electronico">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn-send">ENVIAR</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <br>
-            <input type="button" class="btn btn-primary btn-send" value="ENVIAR">
         </div>
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            window.setTimeout(function() {
+                $(".alert").fadeTo(300, 0).slideUp(300, function() {
+                    $(this).remove();
+                });
+            }, 2000);
+        </script>
 </body>
 
 </html>

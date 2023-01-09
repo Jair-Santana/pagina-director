@@ -33,8 +33,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $posts = Post::orderBy('id','desc')->get();
-        return view('dashboard', compact('posts'));
+        return redirect()->route('posts.index')
+        ->with('success', 'Bienvenido!');
     }
 
     /**

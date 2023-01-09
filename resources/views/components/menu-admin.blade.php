@@ -28,7 +28,7 @@
 
   @media (min-width: 992px) {
      .img-centered {
-      margin-left: 25%;
+      margin-left: 30%;
     }
   }
 
@@ -42,14 +42,10 @@
   <div class="collapse navbar-collapse" id="myNavbarToggler7">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{ action('App\Http\Controllers\WorkController@displayReels') }}">Reel</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ action('App\Http\Controllers\WorkController@displayArchives') }}">Archive</a>
+        <a class="nav-link" href="{{ action('App\Http\Controllers\WorkController@displayWork') }}">ir a home</a>
       </li>
       <a class="img-centered d-none d-lg-block" href="{{ action('App\Http\Controllers\WorkController@displayWork') }}"> <img src="{{ URL::asset('assets/images/logo.png')}}" alt="Logo" width="50%"></a>
       <li class="nav-item">
-        <a class="nav-link" href="{{ action('App\Http\Controllers\ContactController@displayContact') }}">Contact</a>
       </li>
     </ul>
   </div>

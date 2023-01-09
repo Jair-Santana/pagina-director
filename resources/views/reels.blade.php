@@ -38,8 +38,9 @@
 
 <body>
     <x-menu></x-menu>
-    <div class="row">
+    <div class="row ">
         @foreach ($posts as $index => $post)
+        @if ($post->type == 'reel')
         <div class="col-6 display-videos">
             <div id="video-container-{{ $index }}" class="video-container" style="padding:56.25% 0 0 0;position:relative;">
                 <iframe class="vimeoPlayer" src="https://player.vimeo.com/video/{{$post->demo_url}}?h=a955825869&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;controls=0;app_id=58479" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
@@ -48,8 +49,9 @@
         </div>
         @if ($index == 0)
         <div class="col-12 text-center">
-            <h1>WORK</h1>
+            <h1>REELS</h1>
         </div>
+        @endif
         @endif
         @endforeach
     </div>
